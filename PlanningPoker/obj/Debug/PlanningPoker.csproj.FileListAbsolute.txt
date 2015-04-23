@@ -1,0 +1,5 @@
+c:\users\sg0212163\documents\visual studio 2010\Projects\PlanningPoker\PlanningPoker\bin\Debug\PlanningPoker.dll
+c:\users\sg0212163\documents\visual studio 2010\Projects\PlanningPoker\PlanningPoker\bin\Debug\PlanningPoker.pdb
+c:\users\sg0212163\documents\visual studio 2010\Projects\PlanningPoker\PlanningPoker\obj\Debug\PlanningPoker.dll
+c:\users\sg0212163\documents\visual studio 2010\Projects\PlanningPoker\PlanningPoker\obj\Debug\PlanningPoker.pdb
+C:\Users\sg0212163\documents\visual studio 2010\Projects\PlanningPoker\PlanningPoker\obj\Debug\PlanningPoker.csprojResolveAssemblyReference.cache

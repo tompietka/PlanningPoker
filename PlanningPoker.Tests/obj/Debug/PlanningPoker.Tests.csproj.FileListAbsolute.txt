@@ -1,0 +1,9 @@
+c:\users\sg0212163\documents\visual studio 2010\Projects\PlanningPoker\PlanningPoker.Tests\bin\Debug\PlanningPoker.Tests.dll
+c:\users\sg0212163\documents\visual studio 2010\Projects\PlanningPoker\PlanningPoker.Tests\bin\Debug\PlanningPoker.Tests.pdb
+c:\users\sg0212163\documents\visual studio 2010\Projects\PlanningPoker\PlanningPoker.Tests\bin\Debug\PlanningPoker.dll
+c:\users\sg0212163\documents\visual studio 2010\Projects\PlanningPoker\PlanningPoker.Tests\bin\Debug\PlanningPoker.pdb
+c:\users\sg0212163\documents\visual studio 2010\Projects\PlanningPoker\PlanningPoker.Tests\obj\Debug\PlanningPoker.Tests.csprojResolveAssemblyReference.cache
+c:\users\sg0212163\documents\visual studio 2010\Projects\PlanningPoker\PlanningPoker.Tests\obj\Debug\PlanningPoker.Tests.dll
+c:\users\sg0212163\documents\visual studio 2010\Projects\PlanningPoker\PlanningPoker.Tests\obj\Debug\PlanningPoker.Tests.pdb
+c:\users\sg0212163\documents\visual studio 2010\Projects\PlanningPoker\PlanningPoker.Tests\bin\Debug\nunit.framework.dll
+c:\users\sg0212163\documents\visual studio 2010\Projects\PlanningPoker\PlanningPoker.Tests\bin\Debug\nunit.framework.xml
