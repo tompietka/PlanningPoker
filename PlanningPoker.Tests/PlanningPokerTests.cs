@@ -4,281 +4,337 @@ using System.Globalization;
 using System.Linq;
 using System.Media;
 using System.Text;
+using FluentAssertions;
 using NUnit.Framework;
 
 namespace PlanningPoker.Tests
 {
-
+    [TestFixture]
     public class PlanningPokerTests
     {
-
-        [TestCase(3, 3)]
-        [TestCase(1, 0)]
-        [TestCase(0, 0)]
-        public void DealPlayers_AddGame_CreatesGame(int noPlayers, int PlayersInGame)
+        [Test]
+        public void WhenGameAddedWith3Players_ThenEveryPlayerHaveName()
         {
-            // Arrange:
-            var game = new PlanningPoker(noPlayers);
-            // Act:
-            int playersInGame = game.AddGame(noPlayers);
-            // Assert:
-            Assert.AreEqual(playersInGame, PlayersInGame);
+            //Arrange & Act - konstructor robi arrange & Act
+            var game = new PlanningPoker("Jan", "Andrzej", "Zdzisław");
+            //Assert
+            game.Players.Should().HaveCount(3);
+            game.Players.Should().ContainSingle(x => x.Name == "Jan"); //Lambda functional
+            game.Players.Should().ContainSingle(x => x.Name == "Andrzej");
+            game.Players.Should().ContainSingle(x => x.Name == "Zdzisław");
         }
 
         [Test]
-        public void StoryEstimation_4PlayerGameAvgRoundDown_Estimated()
+        public void WhenGameAddedWith1Player_ThenExceptionIsThrown()
         {
-            // Arrange:
-            int i = 4;
-            var game = new PlanningPoker(i);
-            var story = new PlanningPoker.Story();
-            // Act:
-
-            List<int> playerEstimations = story.CreateList();
-
-            story.AddPlayerEstimation(8, playerEstimations);
-            story.AddPlayerEstimation(2, playerEstimations);
-            story.AddPlayerEstimation(8, playerEstimations);
-            story.AddPlayerEstimation(2, playerEstimations);
-
-            int result = story.CalculateEstimationAvgRoundDown(i, playerEstimations);
-
-            // Assert:
-            Assert.AreEqual(result, 5);
+            //Arrange & Act - konstructor robi arrange & Act
+            Action a = () => new PlanningPoker("Jan");
+            //Assert
+            a.ShouldThrow<ArgumentException>();
+        }
+        [Test]
+        public void WhenGameAddedWith0Player_ThenExceptionIsThrown()
+        {
+            //Arrange & Act - konstructor robi arrange & Act
+            Action a = () => new PlanningPoker();
+            //Assert
+            a.ShouldThrow<ArgumentException>();
         }
 
         [Test]
-        public void StoryEstimation_3PlayerGameAvgRoundDown_Estimated()
+        public void WhenGameAddedWithNULLPlayer_ThenExceptionIsThrown()
         {
-            // Arrange:
-            int i = 3;
-            var game = new PlanningPoker(i);
-            var story = new PlanningPoker.Story();
-            // Act:
-            List<int> playerEstimations = story.CreateList();
-
-            story.AddPlayerEstimation(8, playerEstimations);
-            story.AddPlayerEstimation(2, playerEstimations);
-            story.AddPlayerEstimation(1, playerEstimations);
-
-            int result = story.CalculateEstimationAvgRoundDown(i, playerEstimations);
-
-            // Assert:
-            Assert.AreEqual(result, 3);
-        }
-
-
-        [Test]
-        public void StoryEstimation_4PlayerGameAvgRoundUp_Estimated()
-        {
-            // Arrange:
-            int i = 4;
-            var game = new PlanningPoker(i);
-            var story = new PlanningPoker.Story();
-            // Act:
-            List<int> playerEstimations = story.CreateList();
-
-            story.AddPlayerEstimation(8, playerEstimations);
-            story.AddPlayerEstimation(2, playerEstimations);
-            story.AddPlayerEstimation(8, playerEstimations);
-            story.AddPlayerEstimation(2, playerEstimations);
-
-            int result = story.CalculateEstimationAvgRoundUp(i, playerEstimations);
-
-            // Assert:
-            Assert.AreEqual(result, 5);
+            //Arrange & Act - konstructor robi arrange & Act
+            Action a = () => new PlanningPoker(null);
+            //Assert
+            a.ShouldThrow<ArgumentException>();
         }
 
         [Test]
-        public void StoryEstimation_3PlayerGameAvgRoundUp_Estimated()
+        public void WhenGameAddedWith2IdenticalPlayers_ThenExceptionIsThrown()
         {
-            // Arrange:
-            int i = 3;
-            var game = new PlanningPoker(i);
-            var story = new PlanningPoker.Story();
-            // Act:
-            List<int> playerEstimations = story.CreateList();
-
-            story.AddPlayerEstimation(8, playerEstimations);
-            story.AddPlayerEstimation(2, playerEstimations);
-            story.AddPlayerEstimation(1, playerEstimations);
-
-            int result = story.CalculateEstimationAvgRoundUp(i, playerEstimations);
-
-            // Assert:
-            Assert.AreEqual(result, 4);
+            //Arrange & Act - konstructor robi arrange & Act
+            Action a = () => new PlanningPoker("Jan", "Jan", "Zdzisław");
+            //Assert
+            a.ShouldThrow<ArgumentException>();
         }
 
         [Test]
-        public void StoryEstimation_17PlayerGameAvgRoundUp_Estimated()
+        public void WhenGameAddedWithAPlayerWithNoName_ThenExceptionIsThrown()
         {
-            // Arrange:
-            int i = 17;
-            var game = new PlanningPoker(i);
-            var story = new PlanningPoker.Story();
-            // Act:
-            List<int> playerEstimations = story.CreateList();
-
-            story.AddPlayerEstimation(1, playerEstimations);
-            story.AddPlayerEstimation(1, playerEstimations);
-            story.AddPlayerEstimation(1, playerEstimations);
-            story.AddPlayerEstimation(1, playerEstimations);
-            story.AddPlayerEstimation(1, playerEstimations);
-            story.AddPlayerEstimation(1, playerEstimations);
-            story.AddPlayerEstimation(1, playerEstimations);
-            story.AddPlayerEstimation(1, playerEstimations);
-            story.AddPlayerEstimation(1, playerEstimations);
-            story.AddPlayerEstimation(3, playerEstimations);
-            story.AddPlayerEstimation(1, playerEstimations);
-            story.AddPlayerEstimation(1, playerEstimations);
-            story.AddPlayerEstimation(1, playerEstimations);
-            story.AddPlayerEstimation(3, playerEstimations);
-            story.AddPlayerEstimation(1, playerEstimations);
-            story.AddPlayerEstimation(1, playerEstimations);
-            story.AddPlayerEstimation(2, playerEstimations);
-            int result = story.CalculateEstimationAvgRoundUp(i, playerEstimations);
-
-            // Assert:
-            Assert.AreEqual(result, 2);
+            //Arrange & Act - konstructor robi arrange & Act
+            Action a = () => new PlanningPoker("Jan", "", "Zdzisław");
+            //Assert
+            a.ShouldThrow<ArgumentException>();
         }
 
-        [Test]
-        public void StoryEstimation_3PlayerGameAllEqual_Estimated()
-        {
-            // Arrange:
-            int i = 3;
-            var game = new PlanningPoker(i);
-            var story = new PlanningPoker.Story();
-            // Act:
-            List<int> playerEstimations = story.CreateList();
+        //[TestCase(3, 3)]
+        //[TestCase(1, 0)]
+        //[TestCase(0, 0)]
+        //public void DealPlayers_AddGame_CreatesGame(int noPlayers, int PlayersInGame)
+        //{
+        //    // Arrange:
+        //    var game = new PlanningPoker(noPlayers);
+        //    // Act:
+        //    int playersInGame = game.AddGame(noPlayers);
+        //    // Assert:
+        //    Assert.AreEqual(playersInGame, PlayersInGame);
+        //}
 
-            story.AddPlayerEstimation(3, playerEstimations);
-            story.AddPlayerEstimation(3, playerEstimations);
-            story.AddPlayerEstimation(3, playerEstimations);
+        //[Test]
+        //public void StoryEstimation_4PlayerGameAvgRoundDown_Estimated()
+        //{
+        //    // Arrange:
+        //    int i = 4;
+        //    var game = new PlanningPoker(i);
+        //    var story = new Story();
+        //    // Act:
 
-            int result = story.CalculateEstimationAllEqual(i, playerEstimations);
+        //    List<int> playerEstimations = story.CreateList();
 
-            // Assert:
-            Assert.AreEqual(result, 3);
-        }
-        [Test]
-        public void StoryEstimation_3PlayerGameAllEqual_NotEstimated()
-        {
-            // Arrange:
-            int i = 3;
-            var game = new PlanningPoker(i);
-            var story = new PlanningPoker.Story();
-            // Act:
-            List<int> playerEstimations = story.CreateList();
+        //    story.AddPlayerEstimation(8, playerEstimations);
+        //    story.AddPlayerEstimation(2, playerEstimations);
+        //    story.AddPlayerEstimation(8, playerEstimations);
+        //    story.AddPlayerEstimation(2, playerEstimations);
 
-            story.AddPlayerEstimation(3, playerEstimations);
-            story.AddPlayerEstimation(1, playerEstimations);
-            story.AddPlayerEstimation(3, playerEstimations);
+        //    int result = story.CalculateEstimationAvgRoundDown(i, playerEstimations);
 
-            int result = story.CalculateEstimationAllEqual(i, playerEstimations);
+        //    // Assert:
+        //    Assert.AreEqual(result, 5);
+        //}
 
-            // Assert:
-            Assert.AreEqual(result, 0);
-        }
+        //[Test]
+        //public void StoryEstimation_3PlayerGameAvgRoundDown_Estimated()
+        //{
+        //    // Arrange:
+        //    int i = 3;
+        //    var game = new PlanningPoker(i);
+        //    var story = new Story();
+        //    // Act:
+        //    List<int> playerEstimations = story.CreateList();
 
-        [Test]
-        public void StoryEstimation_5PlayerGameAllEqualRemoveExtreme_Estimated()
-        {
-            // Arrange:
-            int i = 5;
-            var game = new PlanningPoker(i);
-            var story = new PlanningPoker.Story();
-            // Act:
-            List<int> playerEstimations = story.CreateList();
+        //    story.AddPlayerEstimation(8, playerEstimations);
+        //    story.AddPlayerEstimation(2, playerEstimations);
+        //    story.AddPlayerEstimation(1, playerEstimations);
 
-            story.AddPlayerEstimation(3, playerEstimations);
-            story.AddPlayerEstimation(3, playerEstimations);
-            story.AddPlayerEstimation(3, playerEstimations);
-            story.AddPlayerEstimation(1, playerEstimations);
-            story.AddPlayerEstimation(5, playerEstimations);
+        //    int result = story.CalculateEstimationAvgRoundDown(i, playerEstimations);
 
-            List<int> playerEstimationsNormalized = story.NormalizeList(playerEstimations);
+        //    // Assert:
+        //    Assert.AreEqual(result, 3);
+        //}
 
-            int result = story.CalculateEstimationAllEqual(i - 2, playerEstimationsNormalized);
 
-            // Assert:
-            Assert.AreEqual(result, 3);
-        }
+        //[Test]
+        //public void StoryEstimation_4PlayerGameAvgRoundUp_Estimated()
+        //{
+        //    // Arrange:
+        //    int i = 4;
+        //    var game = new PlanningPoker(i);
+        //    var story = new Story();
+        //    // Act:
+        //    List<int> playerEstimations = story.CreateList();
 
-        [Test]
-        public void StoryEstimation_5PlayerGameAllEqualRemoveExtreme_NotEstimated()
-        {
-            // Arrange:
-            int i = 5;
-            var game = new PlanningPoker(i);
-            var story = new PlanningPoker.Story();
-            // Act:
-            List<int> playerEstimations = story.CreateList();
+        //    story.AddPlayerEstimation(8, playerEstimations);
+        //    story.AddPlayerEstimation(2, playerEstimations);
+        //    story.AddPlayerEstimation(8, playerEstimations);
+        //    story.AddPlayerEstimation(2, playerEstimations);
 
-            story.AddPlayerEstimation(3, playerEstimations);
-            story.AddPlayerEstimation(2, playerEstimations);
-            story.AddPlayerEstimation(3, playerEstimations);
-            story.AddPlayerEstimation(1, playerEstimations);
-            story.AddPlayerEstimation(5, playerEstimations);
+        //    int result = story.CalculateEstimationAvgRoundUp(i, playerEstimations);
 
-            List<int> playerEstimationsNormalized = story.NormalizeList(playerEstimations);
+        //    // Assert:
+        //    Assert.AreEqual(result, 5);
+        //}
 
-            int result = story.CalculateEstimationAllEqual(i - 2, playerEstimationsNormalized);
+        //[Test]
+        //public void StoryEstimation_3PlayerGameAvgRoundUp_Estimated()
+        //{
+        //    // Arrange:
+        //    int i = 3;
+        //    var game = new PlanningPoker(i);
+        //    var story = new Story();
+        //    // Act:
+        //    List<int> playerEstimations = story.CreateList();
 
-            // Assert:
-            Assert.AreEqual(result, 0);
-        }
+        //    story.AddPlayerEstimation(8, playerEstimations);
+        //    story.AddPlayerEstimation(2, playerEstimations);
+        //    story.AddPlayerEstimation(1, playerEstimations);
 
-        [Test]
-        public void StoryEstimation_5PlayerGameAvgRoundUpRemoveExtreme_Estimated()
-        {
-            // Arrange:
-            int i = 5;
-            var game = new PlanningPoker(i);
-            var story = new PlanningPoker.Story();
-            // Act:
-            List<int> playerEstimations = story.CreateList();
+        //    int result = story.CalculateEstimationAvgRoundUp(i, playerEstimations);
 
-            story.AddPlayerEstimation(3, playerEstimations);
-            story.AddPlayerEstimation(2, playerEstimations);
-            story.AddPlayerEstimation(3, playerEstimations);
-            story.AddPlayerEstimation(1, playerEstimations);
-            story.AddPlayerEstimation(5, playerEstimations);
+        //    // Assert:
+        //    Assert.AreEqual(result, 4);
+        //}
 
-            List<int> playerEstimationsNormalized = story.NormalizeList(playerEstimations);
+        //[Test]
+        //public void StoryEstimation_17PlayerGameAvgRoundUp_Estimated()
+        //{
+        //    // Arrange:
+        //    int i = 17;
+        //    var game = new PlanningPoker(i);
+        //    var story = new Story();
+        //    // Act:
+        //    List<int> playerEstimations = story.CreateList();
 
-            int result = story.CalculateEstimationAvgRoundUp(i - 2, playerEstimationsNormalized);
+        //    story.AddPlayerEstimation(1, playerEstimations);
+        //    story.AddPlayerEstimation(1, playerEstimations);
+        //    story.AddPlayerEstimation(1, playerEstimations);
+        //    story.AddPlayerEstimation(1, playerEstimations);
+        //    story.AddPlayerEstimation(1, playerEstimations);
+        //    story.AddPlayerEstimation(1, playerEstimations);
+        //    story.AddPlayerEstimation(1, playerEstimations);
+        //    story.AddPlayerEstimation(1, playerEstimations);
+        //    story.AddPlayerEstimation(1, playerEstimations);
+        //    story.AddPlayerEstimation(3, playerEstimations);
+        //    story.AddPlayerEstimation(1, playerEstimations);
+        //    story.AddPlayerEstimation(1, playerEstimations);
+        //    story.AddPlayerEstimation(1, playerEstimations);
+        //    story.AddPlayerEstimation(3, playerEstimations);
+        //    story.AddPlayerEstimation(1, playerEstimations);
+        //    story.AddPlayerEstimation(1, playerEstimations);
+        //    story.AddPlayerEstimation(2, playerEstimations);
+        //    int result = story.CalculateEstimationAvgRoundUp(i, playerEstimations);
 
-            // Assert:
-            Assert.AreEqual(result, 3);
-        }
+        //    // Assert:
+        //    Assert.AreEqual(result, 2);
+        //}
 
-        [Test]
-        public void StoryEstimation_10PlayerGameMedianRoundDown_Estimated()
-        {
-            // Arrange:
-            int i = 10;
-            var game = new PlanningPoker(i);
-            var story = new PlanningPoker.Story();
-            // Act:
-            List<int> playerEstimations = story.CreateList();
+        //[Test]
+        //public void StoryEstimation_3PlayerGameAllEqual_Estimated()
+        //{
+        //    // Arrange:
+        //    int i = 3;
+        //    var game = new PlanningPoker(i);
+        //    var story = new Story();
+        //    // Act:
+        //    List<int> playerEstimations = story.CreateList();
 
-            story.AddPlayerEstimation(2, playerEstimations);
-            story.AddPlayerEstimation(2, playerEstimations);
-            story.AddPlayerEstimation(3, playerEstimations);
-            story.AddPlayerEstimation(2, playerEstimations);
-            story.AddPlayerEstimation(3, playerEstimations);
-            story.AddPlayerEstimation(3, playerEstimations);
-            story.AddPlayerEstimation(1, playerEstimations);
-            story.AddPlayerEstimation(8, playerEstimations);
-            story.AddPlayerEstimation(8, playerEstimations);
-            story.AddPlayerEstimation(1, playerEstimations);
+        //    story.AddPlayerEstimation(3, playerEstimations);
+        //    story.AddPlayerEstimation(3, playerEstimations);
+        //    story.AddPlayerEstimation(3, playerEstimations);
 
-            int result = story.CalculateEstimationMedianRoundDown(i, playerEstimations);
+        //    int result = story.CalculateEstimationAllEqual(i, playerEstimations);
 
-            // Assert:
-            Assert.AreEqual(result, 2);
-        }
+        //    // Assert:
+        //    Assert.AreEqual(result, 3);
+        //}
+        //[Test]
+        //public void StoryEstimation_3PlayerGameAllEqual_NotEstimated()
+        //{
+        //    // Arrange:
+        //    int i = 3;
+        //    var game = new PlanningPoker(i);
+        //    var story = new Story();
+        //    // Act:
+        //    List<int> playerEstimations = story.CreateList();
+
+        //    story.AddPlayerEstimation(3, playerEstimations);
+        //    story.AddPlayerEstimation(1, playerEstimations);
+        //    story.AddPlayerEstimation(3, playerEstimations);
+
+        //    int result = story.CalculateEstimationAllEqual(i, playerEstimations);
+
+        //    // Assert:
+        //    Assert.AreEqual(result, 0);
+        //}
+
+        //[Test]
+        //public void StoryEstimation_5PlayerGameAllEqualRemoveExtreme_Estimated()
+        //{
+        //    // Arrange:
+        //    int i = 5;
+        //    var game = new PlanningPoker(i);
+        //    var story = new Story();
+        //    // Act:
+        //    List<int> playerEstimations = story.CreateList();
+
+        //    story.AddPlayerEstimation(3, playerEstimations);
+        //    story.AddPlayerEstimation(3, playerEstimations);
+        //    story.AddPlayerEstimation(3, playerEstimations);
+        //    story.AddPlayerEstimation(1, playerEstimations);
+        //    story.AddPlayerEstimation(5, playerEstimations);
+
+        //    List<int> playerEstimationsNormalized = story.NormalizeList(playerEstimations);
+
+        //    int result = story.CalculateEstimationAllEqual(i - 2, playerEstimationsNormalized);
+
+        //    // Assert:
+        //    Assert.AreEqual(result, 3);
+        //}
+
+        //[Test]
+        //public void StoryEstimation_5PlayerGameAllEqualRemoveExtreme_NotEstimated()
+        //{
+        //    // Arrange:
+        //    int i = 5;
+        //    var game = new PlanningPoker(i);
+        //    var story = new Story();
+        //    // Act:
+        //    List<int> playerEstimations = story.CreateList();
+
+        //    story.AddPlayerEstimation(3, playerEstimations);
+        //    story.AddPlayerEstimation(2, playerEstimations);
+        //    story.AddPlayerEstimation(3, playerEstimations);
+        //    story.AddPlayerEstimation(1, playerEstimations);
+        //    story.AddPlayerEstimation(5, playerEstimations);
+
+        //    List<int> playerEstimationsNormalized = story.NormalizeList(playerEstimations);
+
+        //    int result = story.CalculateEstimationAllEqual(i - 2, playerEstimationsNormalized);
+
+        //    // Assert:
+        //    Assert.AreEqual(result, 0);
+        //}
+
+        //[Test]
+        //public void StoryEstimation_5PlayerGameAvgRoundUpRemoveExtreme_Estimated()
+        //{
+        //    // Arrange:
+        //    int i = 5;
+        //    var game = new PlanningPoker(i);
+        //    var story = new Story();
+        //    // Act:
+        //    List<int> playerEstimations = story.CreateList();
+
+        //    story.AddPlayerEstimation(3, playerEstimations);
+        //    story.AddPlayerEstimation(2, playerEstimations);
+        //    story.AddPlayerEstimation(3, playerEstimations);
+        //    story.AddPlayerEstimation(1, playerEstimations);
+        //    story.AddPlayerEstimation(5, playerEstimations);
+
+        //    List<int> playerEstimationsNormalized = story.NormalizeList(playerEstimations);
+
+        //    int result = story.CalculateEstimationAvgRoundUp(i - 2, playerEstimationsNormalized);
+
+        //    // Assert:
+        //    Assert.AreEqual(result, 3);
+        //}
+
+        //[Test]
+        //public void StoryEstimation_10PlayerGameMedianRoundDown_Estimated()
+        //{
+        //    // Arrange:
+        //    int i = 10;
+        //    var game = new PlanningPoker(i);
+        //    var story = new Story();
+        //    // Act:
+        //    List<int> playerEstimations = story.CreateList();
+
+        //    story.AddPlayerEstimation(2, playerEstimations);
+        //    story.AddPlayerEstimation(2, playerEstimations);
+        //    story.AddPlayerEstimation(3, playerEstimations);
+        //    story.AddPlayerEstimation(2, playerEstimations);
+        //    story.AddPlayerEstimation(3, playerEstimations);
+        //    story.AddPlayerEstimation(3, playerEstimations);
+        //    story.AddPlayerEstimation(1, playerEstimations);
+        //    story.AddPlayerEstimation(8, playerEstimations);
+        //    story.AddPlayerEstimation(8, playerEstimations);
+        //    story.AddPlayerEstimation(1, playerEstimations);
+
+        //    int result = story.CalculateEstimationMedianRoundDown(i, playerEstimations);
+
+        //    // Assert:
+        //    Assert.AreEqual(result, 2);
+        //}
     }
 
 }

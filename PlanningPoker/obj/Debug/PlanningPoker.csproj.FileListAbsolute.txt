@@ -3,3 +3,8 @@ c:\users\sg0212163\documents\visual studio 2010\Projects\PlanningPoker\PlanningP
 c:\users\sg0212163\documents\visual studio 2010\Projects\PlanningPoker\PlanningPoker\obj\Debug\PlanningPoker.dll
 c:\users\sg0212163\documents\visual studio 2010\Projects\PlanningPoker\PlanningPoker\obj\Debug\PlanningPoker.pdb
 C:\Users\sg0212163\documents\visual studio 2010\Projects\PlanningPoker\PlanningPoker\obj\Debug\PlanningPoker.csprojResolveAssemblyReference.cache
+C:\Users\Tomek\Documents\Visual Studio 2013\Projects\PlanningPoker\PlanningPoker\bin\Debug\PlanningPoker.dll
+C:\Users\Tomek\Documents\Visual Studio 2013\Projects\PlanningPoker\PlanningPoker\bin\Debug\PlanningPoker.pdb
+C:\Users\Tomek\Documents\Visual Studio 2013\Projects\PlanningPoker\PlanningPoker\obj\Debug\PlanningPoker.csprojResolveAssemblyReference.cache
+C:\Users\Tomek\Documents\Visual Studio 2013\Projects\PlanningPoker\PlanningPoker\obj\Debug\PlanningPoker.dll
+C:\Users\Tomek\Documents\Visual Studio 2013\Projects\PlanningPoker\PlanningPoker\obj\Debug\PlanningPoker.pdb
