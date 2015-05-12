@@ -1,6 +1,8 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlanningPoker", "PlanningPoker\PlanningPoker.csproj", "{3A040919-DF24-4726-B963-3D88BD0A6688}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlanningPoker.Tests", "PlanningPoker.Tests\PlanningPoker.Tests.csproj", "{1421122D-2198-46FD-A86B-4C9C384CD2A6}"
