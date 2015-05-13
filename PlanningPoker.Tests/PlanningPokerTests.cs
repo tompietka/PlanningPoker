@@ -62,6 +62,15 @@ namespace PlanningPoker.Tests
             //Assert
             a.ShouldThrow<ArgumentException>();
         }
+
+        [Test]
+        public void WhenGameAddedWithAPlayerWithNameTooShort_ThenExceptionIsThrown()
+        {
+            //Arrange & Act - konstructor robi arrange & Act
+            Action a = () => new PlanningPoker("Jan", "A", "Zdzisław");
+            //Assert
+            a.ShouldThrow<ArgumentException>();
+        }
     }
 
 }

@@ -8,3 +8,6 @@ C:\Users\Tomek\Documents\Visual Studio 2013\Projects\PlanningPoker\PlanningPoker
 C:\Users\Tomek\Documents\Visual Studio 2013\Projects\PlanningPoker\PlanningPoker\obj\Debug\PlanningPoker.csprojResolveAssemblyReference.cache
 C:\Users\Tomek\Documents\Visual Studio 2013\Projects\PlanningPoker\PlanningPoker\obj\Debug\PlanningPoker.dll
 C:\Users\Tomek\Documents\Visual Studio 2013\Projects\PlanningPoker\PlanningPoker\obj\Debug\PlanningPoker.pdb
+C:\Users\Tomek\Documents\Visual Studio 2013\Projects\PlanningPoker\PlanningPoker\bin\Debug\MahApps.Metro.dll
+C:\Users\Tomek\Documents\Visual Studio 2013\Projects\PlanningPoker\PlanningPoker\bin\Debug\System.Windows.Interactivity.dll
+C:\Users\Tomek\Documents\Visual Studio 2013\Projects\PlanningPoker\PlanningPoker\bin\Debug\MahApps.Metro.xml

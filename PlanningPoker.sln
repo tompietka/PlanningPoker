@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlanningPoker", "PlanningPo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlanningPoker.Tests", "PlanningPoker.Tests\PlanningPoker.Tests.csproj", "{1421122D-2198-46FD-A86B-4C9C384CD2A6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApplication1", "WpfApplication1\WpfApplication1.csproj", "{425D4E43-D7F3-4864-AB29-3BEAB174E95F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{1421122D-2198-46FD-A86B-4C9C384CD2A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1421122D-2198-46FD-A86B-4C9C384CD2A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1421122D-2198-46FD-A86B-4C9C384CD2A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{425D4E43-D7F3-4864-AB29-3BEAB174E95F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{425D4E43-D7F3-4864-AB29-3BEAB174E95F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{425D4E43-D7F3-4864-AB29-3BEAB174E95F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{425D4E43-D7F3-4864-AB29-3BEAB174E95F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
