@@ -20,7 +20,6 @@
                         <ComboBoxItem IsSelected="True">Średnia</ComboBoxItem>
                         <ComboBoxItem>Wszystkie równe</ComboBoxItem>
                         <ComboBoxItem>Usuń skrajności, średnia</ComboBoxItem>
-                        <ComboBoxItem>Usuń skrajności, wszystkie równe</ComboBoxItem>
                     </ComboBox>
                     <Label Content="Tryb gry" HorizontalAlignment="Left" Margin="230,41,0,0" VerticalAlignment="Top" Width="72"/>
                 </Grid>
@@ -34,20 +33,28 @@
                         <TextBox Height="18" TextWrapping="Wrap" IsReadOnly="True" Text="{Binding ElementName=CmbTrybGry, Path=Text}" BorderThickness="0"/>
                     </StackPanel>
                     <StackPanel HorizontalAlignment="Left" Height="50" Margin="10,38,0,0" VerticalAlignment="Top" Width="121">
-                        <Button Content="Dodaj Historyjkę" Height="50"/>
+                        <Button Content="Dodaj Historyjkę" Height="50" Click="Button_Click_1"/>
                     </StackPanel>
                     <StackPanel HorizontalAlignment="Left" Height="100" Margin="180,38,0,0" VerticalAlignment="Top" Width="122">
                         <Button Content="Estymuj" Height="50"/>
                     </StackPanel>
                     <StackPanel HorizontalAlignment="Left" Height="45" Margin="10,93,0,0" VerticalAlignment="Top" Width="751">
-                        <TextBox Height="24" TextWrapping="Wrap" Text=""/>
+                        <TextBox Name="TxtStoryName" Height="24" TextWrapping="Wrap" Text=""/>
                     </StackPanel>
                     <StackPanel HorizontalAlignment="Left" Height="50" Margin="352,38,0,0" VerticalAlignment="Top" Width="120">
                         <Button Content="Kolejna runda" Height="50"/>
                     </StackPanel>
                     <StackPanel Name="SplPlayersInGame" HorizontalAlignment="Left" Height="1032" Margin="10,144,0,-410" VerticalAlignment="Top" Width="169"/>
-                    <StackPanel HorizontalAlignment="Left" Height="613" Margin="179,143,0,0" VerticalAlignment="Top" Width="582"/>
-
+                    <StackPanel Name="SplBreak"  HorizontalAlignment="Left" Height="613" Margin="179,143,0,0" VerticalAlignment="Top" Width="60"/>
+                    <StackPanel Name="SplTooBig" HorizontalAlignment="Left" Height="613" Margin="239,143,0,0" VerticalAlignment="Top" Width="60"/>
+                    <StackPanel Name="SplUnknown" HorizontalAlignment="Left" Height="613" Margin="299,144,0,0" VerticalAlignment="Top" Width="60"/>
+                    <StackPanel Name="SplZero" HorizontalAlignment="Left" Height="613" Margin="359,144,0,0" VerticalAlignment="Top" Width="60"/>
+                    <StackPanel Name="SplOne" HorizontalAlignment="Left" Height="613" Margin="419,144,0,0" VerticalAlignment="Top" Width="60"/>
+                    <StackPanel Name="SplTwo" HorizontalAlignment="Left" Height="613" Margin="479,144,0,0" VerticalAlignment="Top" Width="60"/>
+                    <StackPanel Name="SplThree" HorizontalAlignment="Left" Height="613" Margin="539,144,0,0" VerticalAlignment="Top" Width="60"/>
+                    <StackPanel Name="SplFive" HorizontalAlignment="Left" Height="613" Margin="599,144,0,0" VerticalAlignment="Top" Width="60"/>
+                    <StackPanel Name="SplEight" HorizontalAlignment="Left" Height="613" Margin="659,144,0,0" VerticalAlignment="Top" Width="60"/>
+                    <StackPanel Name="SplThirteen" HorizontalAlignment="Left" Height="613" Margin="719,144,0,0" VerticalAlignment="Top" Width="60"/>
                 </Grid>
             </TabItem>
 

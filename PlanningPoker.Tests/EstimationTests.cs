@@ -13,7 +13,9 @@ namespace PlanningPoker.Tests
     public class EstimationTests
     {
 
-        [TestCase(-1)]
+        
+        
+        [TestCase(-2)]
         [TestCase(2)]
         [TestCase(0)]
         public void WhenPlayerAddsCorrectEstimation_EstimationValueIsStored(int a)

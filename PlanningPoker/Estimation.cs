@@ -33,11 +33,11 @@ namespace PlanningPoker
             Five = 5,
             Eight = 8,
             Thirteen = 13,
-            TwentyOne = 21
         }
 
         private static void Validate(int estimationValue)
         {
+            if(estimationValue == -3) throw new ArgumentException("Przerwa w grze");
             var validationFlag = Enum.IsDefined(typeof (EstimationCard), estimationValue);
             if(validationFlag == false) throw new ArgumentException("Wrong Estimation Value");
         }
