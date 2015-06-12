@@ -19,7 +19,7 @@ namespace WpfApplication1
         }
 
         public IList<string> PlayersInGame { get; set; }
-   
+
 
         private void BtnAddPlayerName(object sender, RoutedEventArgs e)
         {
@@ -31,7 +31,7 @@ namespace WpfApplication1
             };
             var newPlayerLabel = new Label
             {
-                Content = "Player",
+                Content = "Gracz",
                 HorizontalAlignment = HorizontalAlignment.Left,
                 VerticalAlignment = VerticalAlignment.Top,
                 
@@ -39,19 +39,28 @@ namespace WpfApplication1
 
             SplLabels.Children.Add(newPlayerLabel);
             SplPlayerNames.Children.Add(newPlayerBox);
+
         }
 
        
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-                    try
+            var playerNames = (from TextBox txtBox in SplPlayerNames.Children select txtBox.Text).ToList();
+
+            var _playerNames = playerNames.ToArray();
+
+            try
                     {
-                        var game = new PlanningPoker.PlanningPoker("Jan");
+                        var game = new PlanningPoker.PlanningPoker(_playerNames);
                     }
                     catch (Exception ex)
                     {
                         MessageBox.Show(ex.Message, "Błąd Aplikacji", MessageBoxButton.OK, MessageBoxImage.Warning);
                     }
+
+            planningPokerTabControl.SelectedIndex = 1;
+
+
 
         }
     }

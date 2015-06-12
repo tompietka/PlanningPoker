@@ -4,10 +4,57 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="600" Width="800">
     <Grid Margin="0,0,2,-17">
-        <StackPanel Name="SplLabels"  HorizontalAlignment="Left" Height="539" Margin="10,41,0,0" VerticalAlignment="Top" Width="130">
-            <Button Content="Dodaj Gracza" Click="BtnAddPlayerName" Height="50"/>
-        </StackPanel>
-        <StackPanel Name="SplPlayerNames"  HorizontalAlignment="Left" Height="488" Margin="145,92,0,0" VerticalAlignment="Top" Width="442"/>
-        <Button Content="Stwórz Grę" HorizontalAlignment="Left" Margin="636,41,0,0" VerticalAlignment="Top" Width="130" Height="51" Click="Button_Click"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="33*"/>
+            <RowDefinition Height="164*"/>
+        </Grid.RowDefinitions>
+        <TabControl HorizontalAlignment="Left" Height="793" Margin="0,10,0,-213" VerticalAlignment="Top" Width="790" Name="planningPokerTabControl" Grid.RowSpan="2">
+            <TabItem Header="Ustawienia">
+                <Grid Margin="0,0,2,-17" Name="BegginingGrid">
+                    <StackPanel Name="SplLabels"  HorizontalAlignment="Left" Height="539" Margin="10,41,0,0" VerticalAlignment="Top" Width="130">
+                        <Button Content="Dodaj Gracza" Click="BtnAddPlayerName" Height="50"/>
+                    </StackPanel>
+                    <StackPanel Name="SplPlayerNames"  HorizontalAlignment="Left" Height="488" Margin="145,92,0,0" VerticalAlignment="Top" Width="442"/>
+                    <Button Content="Stwórz Grę" HorizontalAlignment="Left" Margin="608,41,0,0" VerticalAlignment="Top" Width="130" Height="50" Click="Button_Click"/>
+                    <ComboBox ItemsSource="{Binding}" Name="CmbTrybGry" HorizontalAlignment="Left" Margin="306,41,0,0" VerticalAlignment="Top" Width="202">
+                        <ComboBoxItem IsSelected="True">Średnia</ComboBoxItem>
+                        <ComboBoxItem>Wszystkie równe</ComboBoxItem>
+                        <ComboBoxItem>Usuń skrajności, średnia</ComboBoxItem>
+                        <ComboBoxItem>Usuń skrajności, wszystkie równe</ComboBoxItem>
+                    </ComboBox>
+                    <Label Content="Tryb gry" HorizontalAlignment="Left" Margin="230,41,0,0" VerticalAlignment="Top" Width="72"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Planning Poker">
+                <Grid Margin="0,0,2,-17" Name="GameGrid">
+                    <StackPanel HorizontalAlignment="Left" Height="33" Margin="6,0,0,0" VerticalAlignment="Top" Width="90">
+                        <Label Content="Tryb Gry"/>
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Left" Height="33" Margin="96,0,0,0" VerticalAlignment="Top" Width="232">
+                        <TextBox Height="18" TextWrapping="Wrap" IsReadOnly="True" Text="{Binding ElementName=CmbTrybGry, Path=Text}" BorderThickness="0"/>
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Left" Height="50" Margin="10,38,0,0" VerticalAlignment="Top" Width="121">
+                        <Button Content="Dodaj Historyjkę" Height="50"/>
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Left" Height="100" Margin="180,38,0,0" VerticalAlignment="Top" Width="122">
+                        <Button Content="Estymuj" Height="50"/>
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Left" Height="45" Margin="10,93,0,0" VerticalAlignment="Top" Width="751">
+                        <TextBox Height="24" TextWrapping="Wrap" Text=""/>
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Left" Height="50" Margin="352,38,0,0" VerticalAlignment="Top" Width="120">
+                        <Button Content="Kolejna runda" Height="50"/>
+                    </StackPanel>
+                    <StackPanel Name="SplPlayersInGame" HorizontalAlignment="Left" Height="1032" Margin="10,144,0,-410" VerticalAlignment="Top" Width="169"/>
+                    <StackPanel HorizontalAlignment="Left" Height="613" Margin="179,143,0,0" VerticalAlignment="Top" Width="582"/>
+
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Sesja">
+                <Grid Margin="0,0,2,-17" Name="SessionGrid">
+                </Grid>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Controls:MetroWindow>
