@@ -1,8 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Data.Common;
-using System.Linq;
-using System.Runtime.InteropServices;
 
 namespace PlanningPoker
 {
@@ -32,7 +28,7 @@ namespace PlanningPoker
             Three = 3,
             Five = 5,
             Eight = 8,
-            Thirteen = 13,
+            Thirteen = 13
         }
 
         private static void Validate(int estimationValue)

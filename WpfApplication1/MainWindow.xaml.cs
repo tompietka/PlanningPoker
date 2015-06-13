@@ -27,13 +27,13 @@ namespace WpfApplication1
             {
                 Width = 396,
                 HorizontalAlignment = HorizontalAlignment.Right,
-                VerticalAlignment = VerticalAlignment.Top,
+                VerticalAlignment = VerticalAlignment.Top
             };
             var newPlayerLabel = new Label
             {
                 Content = "Gracz",
                 HorizontalAlignment = HorizontalAlignment.Left,
-                VerticalAlignment = VerticalAlignment.Top,
+                VerticalAlignment = VerticalAlignment.Top
                 
             };
 
@@ -68,7 +68,7 @@ namespace WpfApplication1
                     HorizontalAlignment = HorizontalAlignment.Left,
                     VerticalAlignment = VerticalAlignment.Center,
                     Height = 70,
-                    Width = 60,
+                    Width = 60
             
                 };
 
@@ -78,7 +78,7 @@ namespace WpfApplication1
                     HorizontalAlignment = HorizontalAlignment.Left,
                     VerticalAlignment = VerticalAlignment.Center,
                     Height = 70,
-                    Width = 60,
+                    Width = 60
 
                 };
 
@@ -88,7 +88,7 @@ namespace WpfApplication1
                     HorizontalAlignment = HorizontalAlignment.Left,
                     VerticalAlignment = VerticalAlignment.Center,
                     Height = 70,
-                    Width = 60,
+                    Width = 60
 
                 };
 
@@ -98,7 +98,7 @@ namespace WpfApplication1
                     HorizontalAlignment = HorizontalAlignment.Left,
                     VerticalAlignment = VerticalAlignment.Center,
                     Height = 70,
-                    Width = 60,
+                    Width = 60
                 };
 
                 var newEstimationCardZero = new Button
@@ -107,7 +107,7 @@ namespace WpfApplication1
                     HorizontalAlignment = HorizontalAlignment.Left,
                     VerticalAlignment = VerticalAlignment.Center,
                     Height = 70,
-                    Width = 60,
+                    Width = 60
                 };
 
                 var newEstimationCardOne = new Button
@@ -116,7 +116,7 @@ namespace WpfApplication1
                     HorizontalAlignment = HorizontalAlignment.Left,
                     VerticalAlignment = VerticalAlignment.Center,
                     Height = 70,
-                    Width = 60,
+                    Width = 60
                 };
 
                 var newEstimationCardTwo = new Button
@@ -125,7 +125,7 @@ namespace WpfApplication1
                     HorizontalAlignment = HorizontalAlignment.Left,
                     VerticalAlignment = VerticalAlignment.Center,
                     Height = 70,
-                    Width = 60,
+                    Width = 60
                 };
 
                 var newEstimationCardThree = new Button
@@ -134,7 +134,7 @@ namespace WpfApplication1
                     HorizontalAlignment = HorizontalAlignment.Left,
                     VerticalAlignment = VerticalAlignment.Center,
                     Height = 70,
-                    Width = 60,
+                    Width = 60
                 };
 
                 var newEstimationCardFive = new Button
@@ -143,7 +143,7 @@ namespace WpfApplication1
                     HorizontalAlignment = HorizontalAlignment.Left,
                     VerticalAlignment = VerticalAlignment.Center,
                     Height = 70,
-                    Width = 60,
+                    Width = 60
                 };
 
                 var newEstimationCardEight = new Button
@@ -152,7 +152,7 @@ namespace WpfApplication1
                     HorizontalAlignment = HorizontalAlignment.Left,
                     VerticalAlignment = VerticalAlignment.Center,
                     Height = 70,
-                    Width = 60,
+                    Width = 60
                 };
 
                 var newEstimationCardThirteen = new Button
@@ -161,7 +161,7 @@ namespace WpfApplication1
                     HorizontalAlignment = HorizontalAlignment.Left,
                     VerticalAlignment = VerticalAlignment.Center,
                     Height = 70,
-                    Width = 60,
+                    Width = 60
                 };
 
                 SplPlayersInGame.Children.Add(newPlayerinGame);
@@ -185,7 +185,7 @@ namespace WpfApplication1
             var StoryName = TxtStoryName.Text;
             try
             {
-                var story = new PlanningPoker.Story(StoryName);
+                var story = new Story(StoryName);
             }
             catch (Exception ex)
             {

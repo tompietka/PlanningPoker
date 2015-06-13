@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Media;
-using System.Net.Sockets;
-using System.Text;
 using FluentAssertions;
 using NUnit.Framework;
 
