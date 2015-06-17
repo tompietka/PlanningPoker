@@ -8,8 +8,6 @@ namespace PlanningPoker.Tests
     public class EstimationTests
     {
 
-        
-        
         [TestCase(-2)]
         [TestCase(2)]
         [TestCase(0)]

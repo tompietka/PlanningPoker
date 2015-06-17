@@ -65,9 +65,6 @@ namespace PlanningPoker.Tests
 
         }
 
-
-
-
         [Test]
         public void WhenAtLeastOnePlayerPlaysTooBigInAverageMode_ThenStoryIsTooBig()
         {
@@ -108,7 +105,6 @@ namespace PlanningPoker.Tests
 
         }
 
-
         [Test]
         public void WhenAtLeastOnePlayerPlaysTooBigInAverageRemoveMinMaxMode_ThenStoryIsTooBig()
         {
@@ -148,8 +144,6 @@ namespace PlanningPoker.Tests
             story.Estimation.Should().Be(-1);
 
         }
-
-
 
         [TestCase(3)]
         [TestCase(2)]

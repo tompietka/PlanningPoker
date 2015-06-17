@@ -10,11 +10,11 @@ namespace PlanningPoker.Tests
         [Test]
         public void WhenGameAddedWith3Players_ThenEveryPlayerHaveName()
         {
-            //Arrange & Act - konstructor robi arrange & Act
+            //Arrange & Act 
             var game = new PlanningPoker("Jan", "Andrzej", "Zdzisław");
             //Assert
             game.Players.Should().HaveCount(3);
-            game.Players.Should().ContainSingle(x => x.Name == "Jan"); //Lambda functional
+            game.Players.Should().ContainSingle(x => x.Name == "Jan");
             game.Players.Should().ContainSingle(x => x.Name == "Andrzej");
             game.Players.Should().ContainSingle(x => x.Name == "Zdzisław");
         }
@@ -22,7 +22,7 @@ namespace PlanningPoker.Tests
         [Test]
         public void WhenGameAddedWith1Player_ThenExceptionIsThrown()
         {
-            //Arrange & Act - konstructor robi arrange & Act
+            //Arrange & Act
             Action a = () => new PlanningPoker("Jan");
             //Assert
             a.ShouldThrow<ArgumentException>();
@@ -66,7 +66,7 @@ namespace PlanningPoker.Tests
         [Test]
         public void WhenGameAddedWithAPlayerWithNameTooShort_ThenExceptionIsThrown()
         {
-            //Arrange & Act - konstructor robi arrange & Act
+            //Arrange & Act
             Action a = () => new PlanningPoker("Jan", "A", "Zdzisław");
             //Assert
             a.ShouldThrow<ArgumentException>();

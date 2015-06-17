@@ -55,11 +55,41 @@
                     <StackPanel Name="SplFive" HorizontalAlignment="Left" Height="613" Margin="599,144,0,0" VerticalAlignment="Top" Width="60"/>
                     <StackPanel Name="SplEight" HorizontalAlignment="Left" Height="613" Margin="659,144,0,0" VerticalAlignment="Top" Width="60"/>
                     <StackPanel Name="SplThirteen" HorizontalAlignment="Left" Height="613" Margin="719,144,0,0" VerticalAlignment="Top" Width="60"/>
+                    <StackPanel HorizontalAlignment="Left" Height="55" Margin="641,10,0,0" VerticalAlignment="Top" Width="78">
+                        <TextBox Foreground="Red" Name="txtFinalEstimation" Height="54" TextWrapping="Wrap" Text="3" FontSize ="35" HorizontalAlignment="Center" VerticalAlignment="Center" BorderThickness="0"/>
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Left" Height="28" Margin="539,65,0,0" VerticalAlignment="Top" Width="229">
+                        <TextBox Name="txtEstimationConfirmation" Height="24" TextWrapping="Wrap" Text="* Estymata została zapisana" BorderThickness="0" Foreground="Orange"/>
+                    </StackPanel>
                 </Grid>
             </TabItem>
 
             <TabItem Header="Sesja">
                 <Grid Margin="0,0,2,-17" Name="SessionGrid">
+                    <StackPanel HorizontalAlignment="Left" Height="350" Margin="0,36,0,0" VerticalAlignment="Top" Width="364">
+                        <Label Content="Historyjka"/>
+                        <TextBox Height="23" TextWrapping="Wrap" Text="Możliwość logowania administratora"/>
+                        <TextBox Height="24" TextWrapping="Wrap" Text="Możliwość tworzenia użytkowników"/>
+                        <TextBox Height="22" TextWrapping="Wrap" Text="Graficzny interfejsc użytkownika"/>
+                        <TextBox Height="22" TextWrapping="Wrap" Text="Zmiany w bazie danych"/>
+                        <TextBox Height="24" TextWrapping="Wrap" Text="Walidacja użytkowników"/>
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Left" Height="350" Margin="364,36,0,0" VerticalAlignment="Top" Width="169">
+                        <Label Content="Tryb gry"/>
+                        <TextBox Height="22" TextWrapping="Wrap" Text="Średnia"/>
+                        <TextBox Height="23" TextWrapping="Wrap" Text="Średnia"/>
+                        <TextBox Height="24" TextWrapping="Wrap" Text="Średnia"/>
+                        <TextBox Height="23" TextWrapping="Wrap" Text="Średnia"/>
+                        <TextBox Height="23" TextWrapping="Wrap" Text="Średnia"/>
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Left" Height="350" Margin="538,36,0,0" VerticalAlignment="Top" Width="242">
+                        <Label Content="Estymata"/>
+                        <TextBox Height="23" TextWrapping="Wrap" Text="4"/>
+                        <TextBox Height="23" TextWrapping="Wrap" Text="13"/>
+                        <TextBox Height="22" TextWrapping="Wrap" Text="Za duże"/>
+                        <TextBox Height="22" TextWrapping="Wrap" Text="?"/>
+                        <TextBox Height="23" TextWrapping="Wrap" Text="3"/>
+                    </StackPanel>
                 </Grid>
             </TabItem>
         </TabControl>
