@@ -3,23 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media.Converters;
 using MahApps.Metro.Controls;
 using PlanningPoker;
 
 namespace WpfApplication1
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
+
     public partial class MainWindow : MetroWindow
     {
         public MainWindow()
         {
             InitializeComponent();
+            EstimationsInGame = new List<Estimation>();
+            StoriesInGame = new List<Story>();
         }
 
         public IList<string> PlayersInGame { get; set; }
-
+        public IList<Estimation> EstimationsInGame { get; set; }
+        public IList<Story> StoriesInGame { get; set; }
 
         private void BtnAddPlayerName(object sender, RoutedEventArgs e)
         {
@@ -119,6 +121,8 @@ namespace WpfApplication1
                     Width = 60
                 };
 
+                newEstimationCardOne.Click += newEstimationCardOne_Click;
+
                 var newEstimationCardTwo = new Button
                 {
                     Content = "2",
@@ -127,6 +131,8 @@ namespace WpfApplication1
                     Height = 70,
                     Width = 60
                 };
+
+                newEstimationCardTwo.Click += newEstimationCardTwo_Click;
 
                 var newEstimationCardThree = new Button
                 {
@@ -137,6 +143,8 @@ namespace WpfApplication1
                     Width = 60
                 };
 
+                newEstimationCardThree.Click += newEstimationCardThree_Click;
+
                 var newEstimationCardFive = new Button
                 {
                     Content = "5",
@@ -145,6 +153,8 @@ namespace WpfApplication1
                     Height = 70,
                     Width = 60
                 };
+
+                newEstimationCardFive.Click += newEstimationCardFive_Click;
 
                 var newEstimationCardEight = new Button
                 {
@@ -155,6 +165,8 @@ namespace WpfApplication1
                     Width = 60
                 };
 
+                newEstimationCardEight.Click += newEstimationCardEight_Click;
+
                 var newEstimationCardThirteen = new Button
                 {
                     Content = "13",
@@ -163,6 +175,7 @@ namespace WpfApplication1
                     Height = 70,
                     Width = 60
                 };
+                newEstimationCardThirteen.Click += newEstimationCardThirteen_Click;
 
                 SplPlayersInGame.Children.Add(newPlayerinGame);
                 SplBreak.Children.Add(newEstimationCardBreak);
@@ -180,17 +193,68 @@ namespace WpfApplication1
 
         }
 
+        void newEstimationCardOne_Click(object sender, RoutedEventArgs e)
+        {
+            var EstimationOne = new Estimation("player", "TxtStoryName.Text", 1);
+            EstimationsInGame.Add(EstimationOne);
+        }
+
+                void newEstimationCardTwo_Click(object sender, RoutedEventArgs e)
+                {
+                    var EstimationTwo = new Estimation("player", "TxtStoryName.Text", 2);
+            EstimationsInGame.Add(EstimationTwo);
+        }
+
+                void newEstimationCardThree_Click(object sender, RoutedEventArgs e)
+                {
+                    var EstimationThree = new Estimation("player", "TxtStoryName.Text", 3);
+            EstimationsInGame.Add(EstimationThree);
+        }
+
+                void newEstimationCardFive_Click(object sender, RoutedEventArgs e)
+                {
+                    var EstimationFive = new Estimation("player", "TxtStoryName.Text", 5);
+            EstimationsInGame.Add(EstimationFive);
+        }
+
+                void newEstimationCardEight_Click(object sender, RoutedEventArgs e)
+                {
+                    var EstimationEight = new Estimation("player", "TxtStoryName.Text", 8);
+            EstimationsInGame.Add(EstimationEight);
+        }
+
+                void newEstimationCardThirteen_Click(object sender, RoutedEventArgs e)
+                {
+                    var EstimationThirteen = new Estimation("player", "TxtStoryName.Text", 13);
+            EstimationsInGame.Add(EstimationThirteen);
+        }
+
+          
+
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             var StoryName = TxtStoryName.Text;
             try
             {
                 var story = new Story(StoryName);
+                StoriesInGame.Add(story);
             }
+
+            
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Błąd Aplikacji", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+
+            var estimationsInGame = EstimationsInGame.ToList();
+
+            var result = StoriesInGame.First();
+
+        }
     }
 }
+
