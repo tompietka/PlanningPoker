@@ -11,17 +11,21 @@
         <TabControl HorizontalAlignment="Left" Height="793" Margin="0,10,0,-213" VerticalAlignment="Top" Width="790" Name="planningPokerTabControl" Grid.RowSpan="2">
             <TabItem Header="Ustawienia">
                 <Grid Margin="0,0,2,-17" Name="BegginingGrid">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="89*"/>
+                        <ColumnDefinition Width="301*"/>
+                    </Grid.ColumnDefinitions>
                     <StackPanel Name="SplLabels"  HorizontalAlignment="Left" Height="539" Margin="10,41,0,0" VerticalAlignment="Top" Width="130">
                         <Button Content="Dodaj Gracza" Click="BtnAddPlayerName" Height="50"/>
                     </StackPanel>
-                    <StackPanel Name="SplPlayerNames"  HorizontalAlignment="Left" Height="488" Margin="145,92,0,0" VerticalAlignment="Top" Width="442"/>
-                    <Button Content="Stwórz Grę" HorizontalAlignment="Left" Margin="608,41,0,0" VerticalAlignment="Top" Width="130" Height="50" Click="Button_Click"/>
-                    <ComboBox ItemsSource="{Binding}" Name="CmbTrybGry" HorizontalAlignment="Left" Margin="306,41,0,0" VerticalAlignment="Top" Width="202">
+                    <StackPanel Name="SplPlayerNames"  HorizontalAlignment="Left" Height="488" Margin="145,92,0,0" VerticalAlignment="Top" Width="442" Grid.ColumnSpan="2"/>
+                    <Button Content="Stwórz Grę" HorizontalAlignment="Left" Margin="430,41,0,0" VerticalAlignment="Top" Width="130" Height="50" Click="Button_Click" Grid.Column="1"/>
+                    <ComboBox ItemsSource="{Binding}" Name="CmbTrybGry" HorizontalAlignment="Left" Margin="128,41,0,0" VerticalAlignment="Top" Width="202" Grid.Column="1">
                         <ComboBoxItem IsSelected="True">Średnia</ComboBoxItem>
                         <ComboBoxItem>Wszystkie równe</ComboBoxItem>
                         <ComboBoxItem>Usuń skrajności, średnia</ComboBoxItem>
                     </ComboBox>
-                    <Label Content="Tryb gry" HorizontalAlignment="Left" Margin="230,41,0,0" VerticalAlignment="Top" Width="72"/>
+                    <Label Content="Tryb gry" HorizontalAlignment="Left" Margin="52,41,0,0" VerticalAlignment="Top" Width="72" Grid.Column="1"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Planning Poker">
@@ -30,7 +34,7 @@
                         <Label Content="Tryb Gry"/>
                     </StackPanel>
                     <StackPanel HorizontalAlignment="Left" Height="33" Margin="96,0,0,0" VerticalAlignment="Top" Width="232">
-                        <TextBox Height="18" TextWrapping="Wrap" IsReadOnly="True" Text="{Binding ElementName=CmbTrybGry, Path=Text}" BorderThickness="0"/>
+                        <TextBox Name="txtGameMode" Height="18" TextWrapping="Wrap" IsReadOnly="True" Text="{Binding ElementName=CmbTrybGry, Path=Text}" BorderThickness="0"/>
                     </StackPanel>
                     <StackPanel HorizontalAlignment="Left" Height="50" Margin="10,38,0,0" VerticalAlignment="Top" Width="121">
                         <Button Content="Dodaj Historyjkę" Height="50" Click="Button_Click_1"/>
@@ -56,39 +60,24 @@
                     <StackPanel Name="SplEight" HorizontalAlignment="Left" Height="613" Margin="659,144,0,0" VerticalAlignment="Top" Width="60"/>
                     <StackPanel Name="SplThirteen" HorizontalAlignment="Left" Height="613" Margin="719,144,0,0" VerticalAlignment="Top" Width="60"/>
                     <StackPanel HorizontalAlignment="Left" Height="55" Margin="641,10,0,0" VerticalAlignment="Top" Width="78">
-                        <TextBox Foreground="Red" Name="txtFinalEstimation" Height="54" TextWrapping="Wrap" Text="3" FontSize ="35" HorizontalAlignment="Center" VerticalAlignment="Center" BorderThickness="0"/>
+                        <TextBox Foreground="Red" Name="txtFinalEstimation" Height="54" TextWrapping="Wrap" FontSize ="35" HorizontalAlignment="Center" VerticalAlignment="Center" BorderThickness="0"/>
                     </StackPanel>
                     <StackPanel HorizontalAlignment="Left" Height="28" Margin="539,65,0,0" VerticalAlignment="Top" Width="229">
-                        <TextBox Name="txtEstimationConfirmation" Height="24" TextWrapping="Wrap" Text="* Estymata została zapisana" BorderThickness="0" Foreground="Orange"/>
+                        <TextBox Name="txtEstimationConfirmation" Height="24" TextWrapping="Wrap" BorderThickness="0" Foreground="Orange"/>
                     </StackPanel>
                 </Grid>
             </TabItem>
 
             <TabItem Header="Sesja">
                 <Grid Margin="0,0,2,-17" Name="SessionGrid">
-                    <StackPanel HorizontalAlignment="Left" Height="350" Margin="0,36,0,0" VerticalAlignment="Top" Width="364">
+                    <StackPanel Name="splStoriesHistory"  HorizontalAlignment="Left" Height="350" Margin="0,36,0,0" VerticalAlignment="Top" Width="364">
                         <Label Content="Historyjka"/>
-                        <TextBox Height="23" TextWrapping="Wrap" Text="Możliwość logowania administratora"/>
-                        <TextBox Height="24" TextWrapping="Wrap" Text="Możliwość tworzenia użytkowników"/>
-                        <TextBox Height="22" TextWrapping="Wrap" Text="Graficzny interfejsc użytkownika"/>
-                        <TextBox Height="22" TextWrapping="Wrap" Text="Zmiany w bazie danych"/>
-                        <TextBox Height="24" TextWrapping="Wrap" Text="Walidacja użytkowników"/>
                     </StackPanel>
-                    <StackPanel HorizontalAlignment="Left" Height="350" Margin="364,36,0,0" VerticalAlignment="Top" Width="169">
+                    <StackPanel Name="splModeHistory" HorizontalAlignment="Left" Height="350" Margin="364,36,0,0" VerticalAlignment="Top" Width="169">
                         <Label Content="Tryb gry"/>
-                        <TextBox Height="22" TextWrapping="Wrap" Text="Średnia"/>
-                        <TextBox Height="23" TextWrapping="Wrap" Text="Średnia"/>
-                        <TextBox Height="24" TextWrapping="Wrap" Text="Średnia"/>
-                        <TextBox Height="23" TextWrapping="Wrap" Text="Średnia"/>
-                        <TextBox Height="23" TextWrapping="Wrap" Text="Średnia"/>
                     </StackPanel>
-                    <StackPanel HorizontalAlignment="Left" Height="350" Margin="538,36,0,0" VerticalAlignment="Top" Width="242">
+                    <StackPanel Name="splEstimationHistory" HorizontalAlignment="Left" Height="350" Margin="538,36,0,0" VerticalAlignment="Top" Width="242">
                         <Label Content="Estymata"/>
-                        <TextBox Height="23" TextWrapping="Wrap" Text="4"/>
-                        <TextBox Height="23" TextWrapping="Wrap" Text="13"/>
-                        <TextBox Height="22" TextWrapping="Wrap" Text="Za duże"/>
-                        <TextBox Height="22" TextWrapping="Wrap" Text="?"/>
-                        <TextBox Height="23" TextWrapping="Wrap" Text="3"/>
                     </StackPanel>
                 </Grid>
             </TabItem>

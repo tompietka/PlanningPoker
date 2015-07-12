@@ -233,6 +233,10 @@ namespace WpfApplication1
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
+
+            txtFinalEstimation.Text = "";
+            txtEstimationConfirmation.Text = "";
+            EstimationsInGame.Clear();
             var StoryName = TxtStoryName.Text;
             try
             {
@@ -252,9 +256,51 @@ namespace WpfApplication1
 
             var estimationsInGame = EstimationsInGame.ToList();
 
+            var _estimationsInGame = estimationsInGame.ToArray();
+
             var result = StoriesInGame.First();
 
+            result.EstimateAverageMode(_estimationsInGame);
+
+            txtFinalEstimation.Text = result.Estimation.ToString();
+
+            txtEstimationConfirmation.Text = "* Estymata została zapisana";
+
+            var newStoryLabel = new Label
+            {
+                Content = TxtStoryName.Text,
+                HorizontalAlignment = HorizontalAlignment.Left,
+                VerticalAlignment = VerticalAlignment.Top
+
+            };
+
+            var newModeLabel = new Label
+            {
+                Content = txtGameMode.Text,
+                HorizontalAlignment = HorizontalAlignment.Left,
+                VerticalAlignment = VerticalAlignment.Top
+
+            };
+
+            var newEstimationLabel = new Label
+            {
+                Content = txtFinalEstimation.Text,
+                HorizontalAlignment = HorizontalAlignment.Left,
+                VerticalAlignment = VerticalAlignment.Top
+
+            };
+
+            splStoriesHistory.Children.Add(newStoryLabel);
+            splModeHistory.Children.Add(newModeLabel);
+            splEstimationHistory.Children.Add(newEstimationLabel);
+
+            txtFinalEstimation.Text = result.Estimation.ToString();
+
+            txtEstimationConfirmation.Text = "* Estymata została zapisana";
+        
         }
+
+
     }
 }
 
